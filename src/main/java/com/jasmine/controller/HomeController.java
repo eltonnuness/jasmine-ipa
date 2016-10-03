@@ -5,6 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.jasmine.integrations.TwitterConnector;
 import com.jasmine.model.User;
@@ -17,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import twitter4j.TwitterException;
 
+@Controller
 public class HomeController {
 
 	@FXML

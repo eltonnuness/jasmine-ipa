@@ -1,15 +1,14 @@
 package com.jasmine.controller;
 
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Controller;
 
 import com.jasmine.conf.JasmineFactory;
 import com.jasmine.conf.SpringFxmlLoader;
 import com.jasmine.model.User;
 import com.jasmine.service.UserService;
+import com.jasmine.service.collector.InfoCollector;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -22,24 +21,31 @@ import javafx.stage.Stage;
 
 /**
  * Controller of the main login window
+ * 
  * @author enunes
  * @since 29/09/2016
  *
  */
+@Controller
 public class LoginController {
 
-	@Autowired private UserService userService;
-	@FXML private TextField txtLogin;
-	@FXML private PasswordField txtPassword;
-	
-	private Stage primaryStage;
-	
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private InfoCollector infoCollector;
 	@FXML
-	private void login(){
-		User user = userService.login(txtLogin.getText(), txtPassword.getText());
-		if (user != null){
+	private TextField txtLogin;
+	@FXML
+	private PasswordField txtPassword;
+	private Stage primaryStage;
+	private User user;
+
+	@FXML
+	private void login() {
+		this.user = this.userService.login(this.txtLogin.getText(), this.txtPassword.getText());
+		if (this.user != null) {
 			openHome();
-		}else {
+		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("Error");
 			alert.setContentText("User not found.");
@@ -50,35 +56,40 @@ public class LoginController {
 	/**
 	 * Open the home.
 	 */
-	private void openHome(){
+	private void openHome() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JasmineFactory.class);
 		SpringFxmlLoader loader = new SpringFxmlLoader(context);
-		
-		try{
-			Stage newStage = new Stage();		//Create a new Window(Stage)
-			StackPane root = (StackPane) loader.loadHome("/fxml/home.fxml",newStage);
+
+		try {
+			Stage newStage = new Stage(); //Create a new Window(Stage)
+			StackPane root = (StackPane) loader.loadHome("/fxml/home.fxml", newStage);
 			Scene stackScene = new Scene(root);
 			newStage.setScene(stackScene);
 			newStage.setTitle("Jasmine IPA - Core");
 			newStage.show();
-			primaryStage.close();	//Close the previous window
-			this.primaryStage = newStage; 	//Set the new stage on primaryStage variable.
-		}catch (Exception e){
+			this.primaryStage.close(); //Close the previous window
+			this.primaryStage = newStage; //Set the new stage on primaryStage variable.
+
+			this.infoCollector.startTwitterCollectService(this.user);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
-	private void exit(){
+	private void exit() {
 		System.exit(1);
 	}
-	
+
 	/**
 	 * Method helper to set the primary stage.
-	 * @param stage new stage.
+	 * 
+	 * @param stage
+	 *            new stage.
 	 */
-	public void setPrimaryStage(Stage stage){
+	public void setPrimaryStage(Stage stage) {
 		this.primaryStage = stage;
 	}
-	
+
 }
