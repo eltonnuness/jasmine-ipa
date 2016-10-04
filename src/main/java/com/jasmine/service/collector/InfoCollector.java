@@ -26,8 +26,6 @@ public class InfoCollector {
 	private DataSource<Status> dataSource;
 
 	public void startTwitterCollectService(User user) {
-		this.dataSource = new TwitterInfo();
-
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
@@ -43,7 +41,7 @@ public class InfoCollector {
 		};
 
 		Timer timerTwitter = new Timer();
-		timerTwitter.schedule(task, 2000, 60000);
+		timerTwitter.schedule(task, 2000, 90000);
 
 	}
 
