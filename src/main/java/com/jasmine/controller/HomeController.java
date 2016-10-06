@@ -5,7 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import com.jasmine.integrations.TwitterConnector;
 import com.jasmine.model.User;
@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import twitter4j.TwitterException;
 
-@Controller
+@Component
 public class HomeController {
 
 	@FXML
@@ -44,7 +44,7 @@ public class HomeController {
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				txtAreaJasmineMinds.setText("something" + a++);
+				HomeController.this.txtAreaJasmineMinds.setText("something" + HomeController.this.a++);
 			}
 		};
 
@@ -55,9 +55,9 @@ public class HomeController {
 	private void testPersist() {
 		User user = new User();
 		try {
-			twitterConnector.access(user);
+			this.twitterConnector.access(user);
 
-			mongo.getDB("jasmine-data");
+			this.mongo.getDB("jasmine-data");
 
 		} catch (TwitterException e) {
 
@@ -71,7 +71,7 @@ public class HomeController {
 	}
 
 	public Stage getPrimaryStage() {
-		return primaryStage;
+		return this.primaryStage;
 	}
 
 }

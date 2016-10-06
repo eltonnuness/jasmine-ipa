@@ -2,13 +2,13 @@ package com.jasmine.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import com.jasmine.conf.JasmineFactory;
 import com.jasmine.conf.SpringFxmlLoader;
 import com.jasmine.model.User;
 import com.jasmine.service.UserService;
-import com.jasmine.service.collector.InfoCollector;
+import com.jasmine.service.collector.CollectorServiceHandler;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -26,13 +26,13 @@ import javafx.stage.Stage;
  * @since 29/09/2016
  *
  */
-@Controller
+@Component
 public class LoginController {
 
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private InfoCollector infoCollector;
+	private CollectorServiceHandler collectorServiceHandler;
 	@FXML
 	private TextField txtLogin;
 	@FXML
@@ -70,7 +70,7 @@ public class LoginController {
 			this.primaryStage.close(); //Close the previous window
 			this.primaryStage = newStage; //Set the new stage on primaryStage variable.
 
-			this.infoCollector.startTwitterCollectService(this.user);
+			this.collectorServiceHandler.startAllCollectors(this.user);
 
 		} catch (Exception e) {
 			e.printStackTrace();
