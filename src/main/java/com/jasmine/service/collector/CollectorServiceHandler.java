@@ -9,6 +9,14 @@ import org.springframework.stereotype.Component;
 
 import com.jasmine.model.User;
 
+/**
+ * The Handler of collectors, this class handle all calls and execute tasks.
+ * 
+ * @author enunes
+ * @version 1.0
+ * @since 11/10/2016
+ *
+ */
 @Component
 public class CollectorServiceHandler {
 
