@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 /**
  * Controller of the main login window
  * 
- * @author enunes
+ * @author Élton Nunes <elton_12_nunes@hotmail.com>
  * @since 29/09/2016
  *
  */

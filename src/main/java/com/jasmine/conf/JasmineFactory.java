@@ -13,6 +13,12 @@ import com.jasmine.controller.HomeController;
 import com.jasmine.controller.LoginController;
 import com.jasmine.service.collector.Collector;
 
+/**
+ * Classe responsavel por realizar a configuração dos beans da aplicação
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ */
 @Configuration
 @ComponentScan(basePackages = "com.jasmine")
 public class JasmineFactory {

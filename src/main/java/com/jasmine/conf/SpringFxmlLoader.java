@@ -12,6 +12,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
+/**
+ * Classe responsavel por realizar o carregamento dos arquivos FXML do JavaFX e
+ * configurar os controllers criados pelo JavaFX para que passem pelo container
+ * do spring para que possamos injetar beans neles.
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ *
+ */
 public class SpringFxmlLoader {
 
 	private ApplicationContext context;
@@ -26,10 +35,10 @@ public class SpringFxmlLoader {
 
 		try {
 			fxmlStream = LoginController.class.getResourceAsStream(url);
-			LoginController instance = context.getBean(LoginController.class);
+			LoginController instance = this.context.getBean(LoginController.class);
 			instance.setPrimaryStage(stage);
 			FXMLLoader loader = new FXMLLoader();
-			loader.setControllerFactory(clazz -> context.getBean(clazz));
+			loader.setControllerFactory(clazz -> this.context.getBean(clazz));
 			return loader.load(fxmlStream);
 		} finally {
 			if (fxmlStream != null) {
@@ -45,10 +54,10 @@ public class SpringFxmlLoader {
 
 		try {
 			fxmlStream = HomeController.class.getResourceAsStream(url);
-			HomeController instance = context.getBean(HomeController.class);
+			HomeController instance = this.context.getBean(HomeController.class);
 			instance.setPrimaryStage(stage);
 			FXMLLoader loader = new FXMLLoader();
-			loader.setControllerFactory(clazz -> context.getBean(clazz));
+			loader.setControllerFactory(clazz -> this.context.getBean(clazz));
 			return loader.load(fxmlStream);
 		} finally {
 			if (fxmlStream != null) {

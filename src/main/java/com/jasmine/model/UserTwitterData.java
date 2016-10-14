@@ -5,6 +5,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import twitter4j.Status;
 
+/**
+ * Classe responsavel por definir os atributos das informações de twitter
+ * armazenadas.
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ */
 @Document(collection = "usertwitterdata")
 public class UserTwitterData {
 
@@ -24,7 +31,7 @@ public class UserTwitterData {
 	}
 
 	public String getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(String id) {
@@ -32,7 +39,7 @@ public class UserTwitterData {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {
@@ -40,7 +47,7 @@ public class UserTwitterData {
 	}
 
 	public Status getStatus() {
-		return status;
+		return this.status;
 	}
 
 	public void setStatus(Status status) {
@@ -49,7 +56,7 @@ public class UserTwitterData {
 
 	@Override
 	public String toString() {
-		return String.format("UserTwitterData [id=%s, user=%s, status=%s]", id, user, status);
+		return String.format("UserTwitterData [id=%s, user=%s, status=%s]", this.id, this.user, this.status);
 	}
 
 }

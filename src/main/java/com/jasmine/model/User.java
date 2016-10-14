@@ -3,6 +3,12 @@ package com.jasmine.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Classe responsavel por definir os atributos do documento de usuários
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ */
 @Document(collection = "users")
 public class User {
 
@@ -24,7 +30,7 @@ public class User {
 	}
 
 	public String getLogin() {
-		return login;
+		return this.login;
 	}
 
 	public void setLogin(String login) {
@@ -32,7 +38,7 @@ public class User {
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -40,7 +46,7 @@ public class User {
 	}
 
 	public String getAccessToken() {
-		return accessToken;
+		return this.accessToken;
 	}
 
 	public void setAccessToken(String accessToken) {
@@ -48,7 +54,7 @@ public class User {
 	}
 
 	public String getAccessTokenSecret() {
-		return accessTokenSecret;
+		return this.accessTokenSecret;
 	}
 
 	public void setAccessTokenSecret(String accessTokenSecret) {
@@ -57,7 +63,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return String.format("Customer[id=%s, firstName='%s', lastName='%s']", id, login, password);
+		return String.format("Customer[id=%s, firstName='%s', lastName='%s']", this.id, this.login, this.password);
 	}
 
 }

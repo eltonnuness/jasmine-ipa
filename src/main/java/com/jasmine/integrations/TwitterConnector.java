@@ -18,6 +18,12 @@ import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 import twitter4j.conf.ConfigurationBuilder;
 
+/**
+ * Classe responsavel por realizar o acesso a API do twitter
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ */
 @Component
 public class TwitterConnector {
 
@@ -26,7 +32,7 @@ public class TwitterConnector {
 	public Twitter access(User user) throws TwitterException {
 
 		try {
-			prop.load(StartJasmine.class.getResourceAsStream("/keys/twitter.properties"));
+			this.prop.load(StartJasmine.class.getResourceAsStream("/keys/twitter.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -35,8 +41,8 @@ public class TwitterConnector {
 
 		cb.setDebugEnabled(true).setOAuthAccessToken(user.getAccessToken())
 				.setOAuthAccessTokenSecret(user.getAccessTokenSecret())
-				.setOAuthConsumerKey(prop.getProperty("consumer-key"))
-				.setOAuthConsumerSecret(prop.getProperty("consumer-secret"));
+				.setOAuthConsumerKey(this.prop.getProperty("consumer-key"))
+				.setOAuthConsumerSecret(this.prop.getProperty("consumer-secret"));
 
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		Twitter twitter = tf.getInstance();
@@ -48,14 +54,14 @@ public class TwitterConnector {
 	public void authorizeAccessUserData() {
 
 		try {
-			prop.load(new FileInputStream("/keys/twitter.properties"));
+			this.prop.load(new FileInputStream("/keys/twitter.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 
-		cb.setDebugEnabled(true).setOAuthConsumerKey(prop.getProperty("consumer-key"))
+		cb.setDebugEnabled(true).setOAuthConsumerKey(this.prop.getProperty("consumer-key"))
 				.setOAuthConsumerSecret("consumer-secret");
 		try {
 			TwitterFactory tf = new TwitterFactory(cb.build());

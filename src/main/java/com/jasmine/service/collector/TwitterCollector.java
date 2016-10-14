@@ -14,6 +14,13 @@ import com.jasmine.model.User;
 import com.jasmine.model.UserTwitterData;
 import com.jasmine.service.TwitterService;
 
+/**
+ * Classe extendida da Collector que possui as operações necessarias para o
+ * coletor de dados do twitter
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ */
 @Component
 public class TwitterCollector extends Collector {
 

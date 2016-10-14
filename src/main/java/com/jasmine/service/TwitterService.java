@@ -12,6 +12,13 @@ import com.jasmine.model.UserTwitterData;
 import com.jasmine.model.ValueObjectMapReduce;
 import com.jasmine.repository.UserTwitterDataRepository;
 
+/**
+ * Classe responsavel por expor os serviços disponiveis com a entidade
+ * UserTwitterDataRepository
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ */
 @Service
 public class TwitterService {
 

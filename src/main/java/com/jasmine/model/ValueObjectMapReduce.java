@@ -1,5 +1,11 @@
 package com.jasmine.model;
 
+/**
+ * Objeto usado para retornar o resultado de map-reduce feito pelo MongoDB
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ */
 public class ValueObjectMapReduce {
 
 	private String id;

@@ -1,5 +1,12 @@
 package com.jasmine.exceptions;
 
+/**
+ * Exception criada para identificar algum problema de conectividade com a API
+ * do Twitter
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ */
 public class TwitterConnectivityException extends Exception {
 
 	/**
@@ -11,7 +18,8 @@ public class TwitterConnectivityException extends Exception {
 		super();
 	}
 
-	public TwitterConnectivityException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+	public TwitterConnectivityException(String message, Throwable cause, boolean enableSuppression,
+			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}
 

@@ -12,6 +12,13 @@ import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
+/**
+ * Classe responsavel por intermediar os acessos a api do twitter para a
+ * aplicação.
+ * 
+ * @author Élton Nunes - <elton_12_nunes@hotmail.com>
+ * @since 14/10/2016
+ */
 @Component
 public class TwitterInfo {
 
