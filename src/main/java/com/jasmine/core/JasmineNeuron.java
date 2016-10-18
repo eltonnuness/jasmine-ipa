@@ -9,6 +9,6 @@ package com.jasmine.core;
  */
 public interface JasmineNeuron {
 
-	public String process();
+	public void process();
 
 }

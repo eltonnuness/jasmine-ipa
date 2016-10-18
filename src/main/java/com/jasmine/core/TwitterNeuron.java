@@ -10,9 +10,8 @@ package com.jasmine.core;
 public class TwitterNeuron implements JasmineNeuron {
 
 	@Override
-	public String process() {
+	public void process() {
 		processCountWords();
-		return null;
 	}
 
 	private void processCountWords() {

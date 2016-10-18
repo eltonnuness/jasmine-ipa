@@ -10,9 +10,8 @@ package com.jasmine.core;
 public class WeatherNeuron implements JasmineNeuron {
 
 	@Override
-	public String process() {
+	public void process() {
 		processTodayTemperature();
-		return null;
 	}
 
 	private void processTodayTemperature() {
