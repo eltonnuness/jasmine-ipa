@@ -4,6 +4,9 @@ package com.jasmine.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.jasmine.core.JasmineBrain;
+import com.jasmine.core.JasmineMindsHandler;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -27,9 +30,15 @@ public class HomeController {
 	private Button btnSay;
 	@Autowired
 	private Stage primaryStage;
+	@Autowired
+	private JasmineMindsHandler jasmineMinds;
+	@Autowired
+	private JasmineBrain jasmineBrain;
 
 	@FXML
 	private void initialize() {
+		this.jasmineMinds.setTextArea(this.txtAreaJasmineMinds);
+		//this.jasmineBrain.start(); USER
 	}
 
 	public void setPrimaryStage(Stage stage) {

@@ -1,5 +1,7 @@
 package com.jasmine.core;
 
+import com.jasmine.model.User;
+
 /**
  * Interface responsavel por definir o metodo de processamento que será
  * realizado pelas classes que à implementem
@@ -9,6 +11,6 @@ package com.jasmine.core;
  */
 public interface JasmineNeuron {
 
-	public void process();
+	public void process(User user);
 
 }

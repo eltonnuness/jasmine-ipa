@@ -6,7 +6,7 @@ package com.jasmine.model;
  * @author Élton Nunes - <elton_12_nunes@hotmail.com>
  * @since 14/10/2016
  */
-public class ValueObjectMapReduce {
+public class ValueObjectMapReduce implements Comparable<ValueObjectMapReduce> {
 
 	private String id;
 	private float value;
@@ -34,6 +34,11 @@ public class ValueObjectMapReduce {
 	@Override
 	public String toString() {
 		return String.format("ValueObjectMapReduce [id=%s, value=%s]", this.id, this.value);
+	}
+
+	@Override
+	public int compareTo(ValueObjectMapReduce vomr) {
+		return Float.valueOf(this.getValue()).compareTo(vomr.getValue());
 	}
 
 }

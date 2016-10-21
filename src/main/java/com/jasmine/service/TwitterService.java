@@ -1,5 +1,8 @@
 package com.jasmine.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +35,17 @@ public class TwitterService {
 		return this.userTdr.save(userTwitterData);
 	}
 
-	public Iterable<ValueObjectMapReduce> countTweetWords(User user) {
+	public Collection<ValueObjectMapReduce> countTweetWords(User user) {
 
 		MapReduceResults<ValueObjectMapReduce> results = this.mongoOperations.mapReduce("usertwitterdata",
 				"classpath:com/jasmine/utils/mongodb/scripts/word_count_map.js",
 				"classpath:com/jasmine/utils/mongodb/scripts/word_count_reduce.js", ValueObjectMapReduce.class);
 
-		return results;
+		Collection<ValueObjectMapReduce> listResults = new ArrayList<>();
+		results.forEach(listResults::add);
+		Collections.sort((List<ValueObjectMapReduce>) listResults, Collections.reverseOrder());
+
+		return listResults;
 	}
 
 }

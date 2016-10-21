@@ -1,5 +1,7 @@
 package com.jasmine.core;
 
+import org.springframework.stereotype.Component;
+
 import javafx.scene.control.TextArea;
 
 /**
@@ -9,6 +11,7 @@ import javafx.scene.control.TextArea;
  * @author Élton Nunes - <elton_12_nunes@hotmail.com>
  * @since 14/10/2016
  */
+@Component
 public class JasmineMindsHandler {
 
 	public TextArea txtAreaJasmineMinds;

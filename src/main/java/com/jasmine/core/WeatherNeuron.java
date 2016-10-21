@@ -1,5 +1,7 @@
 package com.jasmine.core;
 
+import com.jasmine.model.User;
+
 /**
  * Implementação do neuronio criado para processamento das informações que serão
  * exibidas para o usuário
@@ -10,7 +12,7 @@ package com.jasmine.core;
 public class WeatherNeuron implements JasmineNeuron {
 
 	@Override
-	public void process() {
+	public void process(User user) {
 		processTodayTemperature();
 	}
 
