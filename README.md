@@ -4,4 +4,5 @@ Intelligent personal assistant integrated with facebook, twitter, weather api an
 # Using Technologies
 Java 8, JavaFX, MongoDB with Map-reduce, Spring Framework to control of Dependency Injection, Spring Data MongoDB.
 
-Created by: Élton Nunes
+# Created by 
+-Élton Nunes-
