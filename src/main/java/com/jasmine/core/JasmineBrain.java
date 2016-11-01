@@ -2,6 +2,7 @@ package com.jasmine.core;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.jasmine.model.User;
@@ -17,9 +18,14 @@ import com.jasmine.model.User;
 public class JasmineBrain {
 	private boolean thinking;
 	private boolean started;
+	@Autowired
 	List<JasmineNeuron> neurons;
 
 	public void start(User user) {
-		//TODO Implement
+
+		for (JasmineNeuron jasmineNeuron : this.neurons) {
+			jasmineNeuron.process(user);
+		}
+
 	}
 }

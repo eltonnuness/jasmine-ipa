@@ -1,5 +1,8 @@
 package com.jasmine.core;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.jasmine.model.User;
 
 /**
@@ -13,7 +16,15 @@ public class WeatherNeuron implements JasmineNeuron {
 
 	@Override
 	public void process(User user) {
-		processTodayTemperature();
+		Timer timer = new Timer();
+
+		TimerTask timerTask = new TimerTask() {
+			@Override
+			public void run() {
+				processTodayTemperature();
+			}
+		};
+		timer.schedule(timerTask, 2000, 240000); //240000 = 4 minutes.
 	}
 
 	private void processTodayTemperature() {

@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.jasmine.controller.HomeController;
 import com.jasmine.controller.LoginController;
+import com.jasmine.core.JasmineNeuron;
 import com.jasmine.service.collector.Collector;
 
 /**
@@ -27,6 +28,10 @@ public class JasmineFactory {
 	private Collector twitterCollector;
 	@Autowired
 	private Collector weatherCollector;
+	@Autowired
+	private JasmineNeuron twitterNeuron;
+	@Autowired
+	private JasmineNeuron weatherNeuron;
 
 	@Bean
 	public LoginController loginController() {
@@ -45,5 +50,14 @@ public class JasmineFactory {
 		List<Collector> collectors = new ArrayList<>();
 		Collections.addAll(collectors, this.twitterCollector, this.weatherCollector);
 		return collectors;
+	}
+
+	List<JasmineNeuron> neurons;
+
+	@Bean
+	public List<JasmineNeuron> neurons() {
+		List<JasmineNeuron> neurons = new ArrayList<>();
+		Collections.addAll(neurons, this.twitterNeuron, this.weatherNeuron);
+		return neurons;
 	}
 }

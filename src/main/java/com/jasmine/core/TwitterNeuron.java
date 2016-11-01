@@ -3,7 +3,10 @@ package com.jasmine.core;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +31,17 @@ public class TwitterNeuron implements JasmineNeuron {
 
 	@Override
 	public void process(User user) {
-		processCountWords(user);
+
+		Timer timer = new Timer();
+
+		TimerTask timerTask = new TimerTask() {
+			@Override
+			public void run() {
+				processCountWords(user);
+			}
+		};
+
+		timer.schedule(timerTask, 2000, 240000); //240000 = 4 minutes.
 	}
 
 	private void processCountWords(User user) {
@@ -44,7 +57,10 @@ public class TwitterNeuron implements JasmineNeuron {
 		for (int i = 0; i <= 2; i++) {
 			twitterWords[i] = countWords.get(i).getId();
 		}
-		//stb.append(StringUtils.)
+		stb.append(StringUtils.join(twitterWords, ","));
+		stb.append(".");
+
+		this.jasmineMemory.add(stb.toString());
 	}
 
 }

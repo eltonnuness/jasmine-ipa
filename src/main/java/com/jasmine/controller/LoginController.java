@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.jasmine.conf.JasmineFactory;
 import com.jasmine.conf.SpringFxmlLoader;
+import com.jasmine.core.JasmineBrain;
 import com.jasmine.model.User;
 import com.jasmine.service.UserService;
 import com.jasmine.service.collector.CollectorServiceHandler;
@@ -33,6 +34,8 @@ public class LoginController {
 	private UserService userService;
 	@Autowired
 	private CollectorServiceHandler collectorServiceHandler;
+	@Autowired
+	private JasmineBrain jasmineBrain;
 	@FXML
 	private TextField txtLogin;
 	@FXML
@@ -71,6 +74,7 @@ public class LoginController {
 			this.primaryStage = newStage; //Set the new stage on primaryStage variable.
 
 			this.collectorServiceHandler.startAllCollectors(this.user);
+			this.jasmineBrain.start(this.user);
 
 		} catch (Exception e) {
 			e.printStackTrace();

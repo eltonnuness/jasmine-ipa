@@ -28,7 +28,7 @@ public class HomeController {
 	private TextField txtUserMinds;
 	@FXML
 	private Button btnSay;
-	@Autowired
+	@FXML
 	private Stage primaryStage;
 	@Autowired
 	private JasmineMindsHandler jasmineMinds;
@@ -38,7 +38,6 @@ public class HomeController {
 	@FXML
 	private void initialize() {
 		this.jasmineMinds.setTextArea(this.txtAreaJasmineMinds);
-		//this.jasmineBrain.start(); USER
 	}
 
 	public void setPrimaryStage(Stage stage) {
