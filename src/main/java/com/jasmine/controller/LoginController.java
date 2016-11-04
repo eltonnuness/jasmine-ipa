@@ -6,10 +6,8 @@ import org.springframework.stereotype.Component;
 
 import com.jasmine.conf.JasmineFactory;
 import com.jasmine.conf.SpringFxmlLoader;
-import com.jasmine.core.JasmineBrain;
 import com.jasmine.model.User;
 import com.jasmine.service.UserService;
-import com.jasmine.service.collector.CollectorServiceHandler;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -32,10 +30,6 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private CollectorServiceHandler collectorServiceHandler;
-	@Autowired
-	private JasmineBrain jasmineBrain;
 	@FXML
 	private TextField txtLogin;
 	@FXML
@@ -65,17 +59,13 @@ public class LoginController {
 
 		try {
 			Stage newStage = new Stage(); //Create a new Window(Stage)
-			StackPane root = (StackPane) loader.loadHome("/fxml/home.fxml", newStage);
+			StackPane root = (StackPane) loader.loadHome("/fxml/home.fxml", newStage, this.user);
 			Scene stackScene = new Scene(root);
 			newStage.setScene(stackScene);
 			newStage.setTitle("Jasmine IPA - Core");
 			newStage.show();
 			this.primaryStage.close(); //Close the previous window
 			this.primaryStage = newStage; //Set the new stage on primaryStage variable.
-
-			this.collectorServiceHandler.startAllCollectors(this.user);
-			this.jasmineBrain.start(this.user);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

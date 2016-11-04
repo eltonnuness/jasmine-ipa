@@ -1,5 +1,6 @@
 package com.jasmine.core;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javafx.scene.control.TextArea;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextArea;
  * @since 14/10/2016
  */
 @Component
+@Scope(value = "singleton")
 public class JasmineMindsHandler {
 
 	public TextArea txtAreaJasmineMinds;

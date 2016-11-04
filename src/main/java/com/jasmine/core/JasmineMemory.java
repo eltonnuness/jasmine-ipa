@@ -28,11 +28,11 @@ public class JasmineMemory {
 			public void run() {
 				String message = JasmineMemory.this.queue.poll();
 				if (message != null) {
-					JasmineMemory.this.jasmineMindsHandler.appendTextBreakLine(JasmineMemory.this.queue.poll());
+					JasmineMemory.this.jasmineMindsHandler.appendTextBreakLine(message);
 				}
 			}
 		};
-		timer.schedule(timerTask, 2000, RandomUtils.nextInt(3000, 10000));
+		timer.schedule(timerTask, 4000, RandomUtils.nextInt(3000, 10000));
 	}
 
 	public synchronized void add(String memory) {

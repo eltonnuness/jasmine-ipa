@@ -60,4 +60,5 @@ public class JasmineFactory {
 		Collections.addAll(neurons, this.twitterNeuron, this.weatherNeuron);
 		return neurons;
 	}
+
 }

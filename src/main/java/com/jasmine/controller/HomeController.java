@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import com.jasmine.core.JasmineBrain;
 import com.jasmine.core.JasmineMindsHandler;
+import com.jasmine.model.User;
+import com.jasmine.service.collector.CollectorServiceHandler;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,6 +26,8 @@ public class HomeController {
 
 	@FXML
 	private TextArea txtAreaJasmineMinds;
+	@Autowired
+	private CollectorServiceHandler collectorServiceHandler;
 	@FXML
 	private TextField txtUserMinds;
 	@FXML
@@ -34,10 +38,13 @@ public class HomeController {
 	private JasmineMindsHandler jasmineMinds;
 	@Autowired
 	private JasmineBrain jasmineBrain;
+	private User user;
 
 	@FXML
 	private void initialize() {
 		this.jasmineMinds.setTextArea(this.txtAreaJasmineMinds);
+		this.collectorServiceHandler.startAllCollectors(this.user);
+		this.jasmineBrain.start(this.user);
 	}
 
 	public void setPrimaryStage(Stage stage) {
@@ -48,4 +55,7 @@ public class HomeController {
 		return this.primaryStage;
 	}
 
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

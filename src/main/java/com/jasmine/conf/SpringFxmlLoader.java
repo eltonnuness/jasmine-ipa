@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.jasmine.controller.HomeController;
 import com.jasmine.controller.LoginController;
+import com.jasmine.model.User;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -48,7 +49,7 @@ public class SpringFxmlLoader {
 
 	}
 
-	public Parent loadHome(String url, Stage stage) throws IOException {
+	public Parent loadHome(String url, Stage stage, User user) throws IOException {
 
 		InputStream fxmlStream = null;
 
@@ -56,6 +57,7 @@ public class SpringFxmlLoader {
 			fxmlStream = HomeController.class.getResourceAsStream(url);
 			HomeController instance = this.context.getBean(HomeController.class);
 			instance.setPrimaryStage(stage);
+			instance.setUser(user);
 			FXMLLoader loader = new FXMLLoader();
 			loader.setControllerFactory(clazz -> this.context.getBean(clazz));
 			return loader.load(fxmlStream);

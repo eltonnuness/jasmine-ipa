@@ -48,7 +48,7 @@ public class TwitterNeuron implements JasmineNeuron {
 		String[] firstWords = { "Estão todos falando sobre: ", "Que curioso, parece que essas palavras estão em alta: ",
 				"Já viu sobre o que estão falando no twitter?: ",
 				"Essas palavras estão sendo muito faladas no twitter: " };
-		String[] twitterWords = {};
+		String[] twitterWords = new String[3];
 
 		List<ValueObjectMapReduce> countWords = new ArrayList<>(this.twitterService.countTweetWords(user));
 		Random randomNum = new Random();
