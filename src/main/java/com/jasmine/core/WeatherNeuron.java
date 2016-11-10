@@ -3,6 +3,9 @@ package com.jasmine.core;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.jasmine.model.User;
 
 /**
@@ -12,7 +15,11 @@ import com.jasmine.model.User;
  * @author Élton Nunes - <elton_12_nunes@hotmail.com>
  * @since 14/10/2016
  */
+@Component
 public class WeatherNeuron implements JasmineNeuron {
+
+	@Autowired
+	private JasmineMemory jasmineMemory;
 
 	@Override
 	public void process(User user) {

@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="root" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jasmine.controller.HomeController">
+<StackPane fx:id="root" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jasmine.controller.HomeController">
     <children>
       <Pane>
          <children>
             <Button fx:id="btnSay" layoutX="14.0" layoutY="261.0" mnemonicParsing="false" onAction="#testPersist" prefHeight="25.0" prefWidth="56.0" text="Say" />
-            <TextArea fx:id="txtAreaJasmineMinds" layoutX="14.0" layoutY="14.0" prefHeight="237.0" prefWidth="371.0" />
+            <TextArea fx:id="txtAreaJasmineMinds" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="237.0" prefWidth="371.0" wrapText="true" />
             <TextField fx:id="txtUserMinds" layoutX="77.0" layoutY="261.0" prefHeight="25.0" prefWidth="307.0" />
          </children>
       </Pane>

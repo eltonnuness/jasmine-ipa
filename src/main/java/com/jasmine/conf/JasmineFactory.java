@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,10 +30,12 @@ public class JasmineFactory {
 	private Collector twitterCollector;
 	@Autowired
 	private Collector weatherCollector;
-	@Autowired
+	@Resource
 	private JasmineNeuron twitterNeuron;
-	@Autowired
+	@Resource
 	private JasmineNeuron weatherNeuron;
+	@Resource
+	private JasmineNeuron jasmineSynthesis;
 
 	@Bean
 	public LoginController loginController() {
@@ -48,7 +52,7 @@ public class JasmineFactory {
 	@Bean
 	public List<Collector> collectors() {
 		List<Collector> collectors = new ArrayList<>();
-		Collections.addAll(collectors, this.twitterCollector, this.weatherCollector);
+		Collections.addAll(collectors, twitterCollector, weatherCollector);
 		return collectors;
 	}
 
@@ -57,7 +61,7 @@ public class JasmineFactory {
 	@Bean
 	public List<JasmineNeuron> neurons() {
 		List<JasmineNeuron> neurons = new ArrayList<>();
-		Collections.addAll(neurons, this.twitterNeuron, this.weatherNeuron);
+		Collections.addAll(neurons, twitterNeuron, weatherNeuron, jasmineSynthesis);
 		return neurons;
 	}
 

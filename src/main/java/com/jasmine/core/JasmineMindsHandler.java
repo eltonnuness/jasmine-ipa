@@ -1,5 +1,8 @@
 package com.jasmine.core;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +27,7 @@ public class JasmineMindsHandler {
 	 * @return return the actual text
 	 */
 	String getText() {
-		return this.txtAreaJasmineMinds.getText();
+		return txtAreaJasmineMinds.getText();
 	}
 
 	/**
@@ -34,8 +37,8 @@ public class JasmineMindsHandler {
 	 * @return
 	 */
 	String appendText(String text) {
-		this.txtAreaJasmineMinds.setText(this.txtAreaJasmineMinds.getText().concat(text));
-		return this.txtAreaJasmineMinds.getText();
+		txtAreaJasmineMinds.setText(txtAreaJasmineMinds.getText().concat(getTimeStamp()).concat(text));
+		return txtAreaJasmineMinds.getText();
 	}
 
 	/**
@@ -46,8 +49,8 @@ public class JasmineMindsHandler {
 	 * @return return the class JasmineMindsHandler
 	 */
 	JasmineMindsHandler appendTextBreakLine(String text) {
-		this.txtAreaJasmineMinds
-				.setText(this.txtAreaJasmineMinds.getText().concat(text).concat(System.getProperty("line.separator")));
+		txtAreaJasmineMinds.setText(txtAreaJasmineMinds.getText().concat(getTimeStamp()).concat(text)
+				.concat(System.getProperty("line.separator")));
 		return this;
 	}
 
@@ -59,15 +62,15 @@ public class JasmineMindsHandler {
 	 * @return Return the text putted
 	 */
 	String setText(String text) {
-		this.txtAreaJasmineMinds.setText(text);
-		return this.txtAreaJasmineMinds.getText();
+		txtAreaJasmineMinds.setText(text);
+		return txtAreaJasmineMinds.getText();
 	}
 
 	/**
 	 * Clear all text
 	 */
 	void clearText() {
-		this.txtAreaJasmineMinds.clear();
+		txtAreaJasmineMinds.clear();
 	}
 
 	/**
@@ -76,7 +79,15 @@ public class JasmineMindsHandler {
 	 * @param textArea
 	 */
 	public void setTextArea(TextArea textArea) {
-		this.txtAreaJasmineMinds = textArea;
+		txtAreaJasmineMinds = textArea;
+	}
+
+	public String getTimeStamp() {
+		StringBuilder sb = new StringBuilder();
+		LocalDateTime ldt = LocalDateTime.now();
+		sb.append("[").append(ldt.format(DateTimeFormatter.ISO_LOCAL_TIME)).append("]").append(" - ");
+
+		return sb.toString();
 	}
 
 }

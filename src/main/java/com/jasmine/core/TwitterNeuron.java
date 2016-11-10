@@ -50,7 +50,7 @@ public class TwitterNeuron implements JasmineNeuron {
 				"Essas palavras estão sendo muito faladas no twitter: " };
 		String[] twitterWords = new String[3];
 
-		List<ValueObjectMapReduce> countWords = new ArrayList<>(this.twitterService.countTweetWords(user));
+		List<ValueObjectMapReduce> countWords = new ArrayList<>(twitterService.countTweetWords(user));
 		Random randomNum = new Random();
 		StringBuffer stb = new StringBuffer();
 		stb.append(firstWords[randomNum.nextInt(firstWords.length - 1)]);
@@ -60,7 +60,7 @@ public class TwitterNeuron implements JasmineNeuron {
 		stb.append(StringUtils.join(twitterWords, ","));
 		stb.append(".");
 
-		this.jasmineMemory.add(stb.toString());
+		jasmineMemory.add(stb.toString());
 	}
 
 }
