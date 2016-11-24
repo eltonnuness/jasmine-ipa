@@ -4,5 +4,8 @@ Intelligent personal assistant integrated with facebook, twitter, weather api an
 # Technologies
 Java 8, JavaFX, MongoDB with Map-reduce, Spring Framework to Dependency Injection ,Spring Data MongoDB and Twitter API.
 
+# Class Diagram
+![alt tag](https://github.com/eltonnuness/jasmine-ipa/blob/master/models/JasmineClassDiagram.jpg)
+
 # Created by 
 Élton Nunes
