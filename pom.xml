@@ -10,7 +10,7 @@
 
 	<properties>
 		<spring-data-mongodb.version>1.9.2.RELEASE</spring-data-mongodb.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<twitter4j-core.version>4.0.4</twitter4j-core.version>
 		<jericho-html.version>3.1</jericho-html.version>
 		<powermock.version>1.6.5</powermock.version>
